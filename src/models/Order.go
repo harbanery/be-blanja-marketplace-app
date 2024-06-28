@@ -18,6 +18,7 @@ type Order struct {
 	PaymentMethod     string   `json:"payment_method"`
 	TotalPrice        float64  `json:"total_price"`
 	Status            string   `json:"status" validate:"required,oneof=not_yet_paid expired get_paid processed sent completed canceled"`
+	TransactionURL    string   `json:"transaction_url"`
 }
 
 type VaNumber struct {
@@ -89,6 +90,11 @@ func UpdateStatusOrder(id int, status string) error {
 
 func UpdatePaymentMethodOrder(id int, paymentMethod string) error {
 	result := configs.DB.Model(&Order{}).Where("id = ?", id).Update("payment_method", paymentMethod)
+	return result.Error
+}
+
+func UpdateURLOrder(id int, url string) error {
+	result := configs.DB.Model(&Order{}).Where("id = ?", id).Update("transaction_url", url)
 	return result.Error
 }
 

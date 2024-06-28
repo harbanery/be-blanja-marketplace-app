@@ -82,6 +82,7 @@ func Router(app *fiber.App) {
 	app.Get("/checkout/:id", middlewares.JWTMiddleware(), controllers.GetCheckoutByUserId)
 
 	// Order Routes
+	app.Get("/orders", middlewares.JWTMiddleware(), controllers.GetAllOrders)
 	app.Get("/order/profile", middlewares.JWTMiddleware(), controllers.GetOrdersUser)
 	app.Post("/order", middlewares.JWTMiddleware(), controllers.CreateOrder)
 	app.Post("/payment/check", controllers.HandlePaymentCallback)

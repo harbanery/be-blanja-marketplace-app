@@ -163,6 +163,7 @@ func CreateCart(c *fiber.Ctx) error {
 		"status":     "success",
 		"statusCode": 200,
 		"message":    "Cart created successfully",
+		"cart_id": newCart.ID,
 	})
 }
 
