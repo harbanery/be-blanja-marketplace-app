@@ -6,6 +6,7 @@ import (
 	"gofiber-marketplace/src/middlewares"
 	"gofiber-marketplace/src/models"
 	"gofiber-marketplace/src/services"
+	"os"
 	"strconv"
 
 	"github.com/gofiber/fiber/v2"
@@ -578,6 +579,35 @@ func HandlePaymentCallback(c *fiber.Ctx) error {
 		"statusCode": 200,
 		"message":    "Transaction payment and status updated.",
 	})
+}
+
+func HandlePaymentRedirectCallback(c *fiber.Ctx) error {
+	params := c.Queries()
+	orderID := params["order_id"]
+	url := os.Getenv("REDIRECT_URL")
+	webStatus := 302
+
+	existOrder := models.SelectOrderbyTransactionNumber(orderID)
+	if existOrder.ID != 0 {
+		if params["transaction_status"] == "pending" {
+			if existOrder.Status == "not_yet_paid" {
+				url += "profile/order?category=not_yet_paid"
+			} else if existOrder.Status == "expired" {
+				url += "profile/order?category=expired"
+				webStatus = 307
+			}
+		} else if params["transaction_status"] == "settlement" {
+			url += "profile/order?category=get_paid"
+			webStatus = 307
+		} else if params["transaction_status"] == "cancel" {
+			url += "profile/order?category=canceled"
+			webStatus = 307
+		}
+	}
+
+	c.Set("Cache-Control", "no-store, no-cache, must-revalidate, private")
+
+	return c.Redirect(url, webStatus)
 }
 
 func UpdateStatusOrder(c *fiber.Ctx) error {

@@ -125,13 +125,16 @@ Ensure you have the following installed on your local machine:
       CLOUDINARY_URL=YOUR_CLOUDINARY_LINK_ACCESS
 
       # SMTP
-      BASE_URL=YOUR_HOST_URL
+      BASE_URL=YOUR_BACKEND_HOST_URL
       SMTP_EMAIL_PASS=YOUR_EMAIL_TOKEN
       SMTP_EMAIL_USER=YOUR_EMAIL_SENDER
 
       # MIDTRANS
       CLIENT_KEY=YOUR_MIDTRANS_CLIENT_KEY
       SERVER_KEY=YOUR_MIDTRANS_CLIENT_KEY
+
+      # REDIRECT_URL
+      REDIRECT_URL=YOUR_FRONTEND_HOST_URL
    ```
 
 ### Running the Application
@@ -250,11 +253,14 @@ Access the API documentation for the **Blanja** project, created by [Raihan Yusu
 ### Meet The Contributors
 
 <table align="center">
+  <tr>
+    <th colspan="4">CodeCraft</th>
+  </tr>
   <tr align="center">
-    <td><b>Project Manager / Front-End Developer</b></td>
-    <td><b>Front-End Developer</b></td>
-    <td><b>Fullstack Developer</b></td>
-    <td><b>Back-End Developer</b></td>
+    <th>Project Manager / Front-End Developer</th>
+    <th>Front-End Developer</th>
+    <th>Fullstack Developer</th>
+    <th>Back-End Developer</th>
   </tr>
   <tr align="center">
     <td><img width="200" src="https://avatars.githubusercontent.com/u/80629118?v=4"/></td>
@@ -302,7 +308,13 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contacts
 
-If you have any questions or inquiries regarding this back-end project, feel free to contact at ryusuf05@gmail.com and syaifullohismail123@gmail.com
+If you have any questions or inquiries regarding this back-end project, feel free to contact at:
+
+[![Raihan Yusuf's Email](https://img.shields.io/badge/Raihan%20Yusuf-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:ryusuf05@gmail.com)
+[![Raihan Yusuf's LinkedIn](https://img.shields.io/badge/Raihan%20Yusuf-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/raihan-yusuf/)
+
+[![Syaifulloh Ismail's Email](https://img.shields.io/badge/Syaifulloh%20Ismail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:syaifullohismail123@gmail.com)
+[![Syaifulloh Ismail's LinkedIn](https://img.shields.io/badge/Syaifulloh%20Ismail-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/syaifulloh-ismail/)
 
 ## Acknowledgements
 
