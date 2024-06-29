@@ -165,14 +165,14 @@ _If you want to interact with the endpoints, go to [Documentation](#documentatio
 
 ### Features
 
-- Registration (and Reset Password) Authentication with [SMTP](https://github.com/go-gomail/gomail)
-- Upload more than one image with Cloudinary
-- More images, colors, and sizes for products and also filtering
-- ORM support for PostgreSQL using [GORM](https://gorm.io/)
-- XSS Middleware and HTML Sanitizer using [bluemonday](https://github.com/microcosm-cc/bluemonday)
-- Model Struct Validation using [Validator](https://github.com/go-playground/validator)
-- Payment getaway using [Midtrans](https://github.com/veritrans/go-midtrans)
-- Token authentication and authorization using [JWT](https://github.com/golang-jwt/jwt)
+- **Registration (and Reset Password) Authentication** with [SMTP by Gomail](https://github.com/go-gomail/gomail)
+- **Upload multiple images** with **Cloudinary**
+- **Support for multiple images, colors, and sizes** for products, including **filtering**
+- **ORM support for PostgreSQL** using [GORM](https://gorm.io/)
+- **XSS Middleware and HTML Sanitizer** using [Bluemonday](https://github.com/microcosm-cc/bluemonday)
+- **Model Struct Validation** using [Validator](https://github.com/go-playground/validator)
+- **Payment gateway** using [Midtrans](https://github.com/veritrans/go-midtrans)
+- **Token authentication and authorization** using [JWT](https://github.com/golang-jwt/jwt)
 
 ### Project Structure
 
@@ -254,7 +254,7 @@ Access the API documentation for the **Blanja** project, created by [Raihan Yusu
 
 <table align="center">
   <tr>
-    <th colspan="4">CodeCraft</th>
+    <th colspan="4">Codecraft</th>
   </tr>
   <tr align="center">
     <th>Project Manager / Front-End Developer</th>
@@ -304,7 +304,7 @@ Contributing project to github is pretty straight forward.
 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License. See [`LICENSE`](https://github.com/harbanery/be-blanja-marketplace-app/blob/main/LICENSE) for more information.
 
 ## Contacts
 
