@@ -1,7 +1,7 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  <a href="https://github.com/echestratus/BlanjaWebsiteProject/tree/feature/back-end">
+  <a href="https://github.com/harbanery/be-blanja-marketplace-app">
     <img src="./public/brandicon.png" alt="Logo Blanja" width="250">
   </a>
 
@@ -15,7 +15,7 @@
     ·
     <a href="https://blanja-website-project.netlify.app/" target="_blank">View Front-End Demo</a>
     ·
-    <a href="https://github.com/echestratus/BlanjaWebsiteProject/tree/feature/front-end" target="_blank">View Front-End Repo</a>
+    <a href="https://github.com/harbanery/blanja-marketplace-app" target="_blank">View Front-End Repo</a>
   </p>
 </div>
 
@@ -99,7 +99,7 @@ Ensure you have the following installed on your local machine:
 1. Clone Repo
 
    ```sh
-     git clone --single-branch --branch feature/back-end https://github.com/echestratus/BlanjaWebsiteProject.git
+     git clone https://github.com/harbanery/be-blanja-marketplace-app.git
    ```
 
 2. Install Go packages
@@ -306,7 +306,7 @@ Contributing project to github is pretty straight forward.
 
 ## License
 
-Distributed under the MIT License. See [`LICENSE`](https://github.com/echestratus/BlanjaWebsiteProject/blob/feature/back-end/LICENSE) for more information.
+Distributed under the MIT License. See [`LICENSE`](https://github.com/harbanery/be-blanja-marketplace-app/blob/main/LICENSE) for more information.
 
 ## Contacts
 
