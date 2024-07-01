@@ -99,13 +99,19 @@ Ensure you have the following installed on your local machine:
 1. Clone Repo
 
    ```sh
-     git clone https://github.com/harbanery/be-blanja-marketplace-app.git
+   git clone https://github.com/harbanery/be-blanja-marketplace-app.git
    ```
 
-2. Install Go packages
+2. Go to folder directory
+
+   ```bash
+   cd be-blanja-marketplace-app
+   ```
+
+3. Install Go packages
 
    ```sh
-     go mod tidy
+   go mod tidy
    ```
 
 ### Setup Environment Variables
@@ -142,19 +148,19 @@ Ensure you have the following installed on your local machine:
 1. To start the development server, you can start with this:
 
    ```sh
-     go run main.go
+   go run main.go
    ```
 
    Or this:
 
    ```sh
-     air
+   air
    ```
 
 2. After that, you can run browser with this url:
 
    ```sh
-     http://localhost:3000
+   http://localhost:3000
    ```
 
 > The local server always start on port `3000` by default.
