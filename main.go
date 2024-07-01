@@ -34,7 +34,7 @@ func main() {
 
 	app.Use(helmet.New())
 	app.Use(cors.New(cors.Config{
-		AllowOrigins:  "*",
+		AllowOrigins:  "http://localhost:3000, http://localhost:5173, https://blanja-website-project.netlify.app, https://be-blanja-marketplace-app-develop.up.railway.app",
 		AllowMethods:  "GET,POST,PUT,DELETE",
 		AllowHeaders:  "*",
 		ExposeHeaders: "Content-Length",

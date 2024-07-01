@@ -176,70 +176,72 @@ _If you want to interact with the endpoints, go to [Documentation](#documentatio
 
 ### Project Structure
 
-```
+Sure, here's the project structure in shell mode with descriptions:
+
+```sh
 be-blanja-marketplace-app/
-├── public/
-│   └── brandicon.png
-├── src/
-│   ├── configs/
-│   │   └── db.go
-│   ├── controllers/
-│   │   ├── AddressController.go
-│   │   ├── CartController.go
-│   │   ├── CartProductController.go
-│   │   ├── CategoryController.go
-│   │   ├── CheckoutController.go
-│   │   ├── ColorController.go
-│   │   ├── CustomerController.go
-│   │   ├── OrderController.go
-│   │   ├── ProductController.go
-│   │   ├── SellerController.go
-│   │   ├── SizeController.go
-│   │   ├── UploadController.go
-│   │   └── UserController.go
-│   ├── helpers/
-│   │   ├── jwt.go
-│   │   ├── migration.go
-│   │   ├── params.go
-│   │   ├── transaction.go
-│   │   ├── url.go
-│   │   └── validation.go
-│   ├── middlewares/
-│   │   ├── jwt.go
-│   │   └── xssClean.go
-│   ├── models/
-│   │   ├── Address.go
-│   │   ├── Cart.go
-│   │   ├── CartProduct.go
-│   │   ├── Category.go
-│   │   ├── Checkout.go
-│   │   ├── Color.go
-│   │   ├── Customer.go
-│   │   ├── Image.go
-│   │   ├── Order.go
-│   │   ├── Product.go
-│   │   ├── Seller.go
-│   │   ├── Size.go
-│   │   └── User.go
-│   ├── routes/
-│   │   └── main.go
-│   └── utils/
-│       ├── cloudinary.go
-│       ├── midtrans.go
-│       └── smtp.go
-├── tmp/
-│   ├── build-errors.log
-│   ├── main.exe
-│   └── ngrok.exe
-├── .air.toml
-├── .env
-├── .gitignore
-├── .golangci.yml
-├── go.mod
-├── go.sum
-├── LICENSE
-├── main.go
-└── README.md
+├── public/                           # Static or public assets
+│   └── brandicon.png                 # Blanja icon (purposely to this README.md)
+├── src/                              # Main application source code
+│   ├── configs/                      # Configuration files
+│   │   └── db.go                     # Database configuration
+│   ├── controllers/                  # Controllers handling HTTP requests
+│   │   ├── AddressController.go      # Address-related operations
+│   │   ├── CartController.go         # Cart-related operations
+│   │   ├── CartProductController.go  # Cart product-related operations
+│   │   ├── CategoryController.go     # Category-related operations
+│   │   ├── CheckoutController.go     # Checkout process
+│   │   ├── ColorController.go        # Color-related operations
+│   │   ├── CustomerController.go     # Customer-related operations
+│   │   ├── OrderController.go        # Order-related operations
+│   │   ├── ProductController.go      # Product-related operations
+│   │   ├── SellerController.go       # Seller-related operations
+│   │   ├── SizeController.go         # Size-related operations
+│   │   ├── UploadController.go       # File upload operations
+│   │   └── UserController.go         # User-related operations
+│   ├── helpers/                      # Helper functions and utilities
+│   │   ├── jwt.go                    # JWT handling
+│   │   ├── migration.go              # Database migrations
+│   │   ├── params.go                 # Query parameter handling
+│   │   ├── transaction.go            # Transaction utilities
+│   │   ├── url.go                    # URL utilities
+│   │   └── validation.go             # Data validation
+│   ├── middlewares/                  # Middleware functions
+│   │   ├── jwt.go                    # JWT middleware
+│   │   └── xssClean.go               # XSS protection middleware
+│   ├── models/                       # Data models
+│   │   ├── Address.go                # Address model
+│   │   ├── Cart.go                   # Cart model
+│   │   ├── CartProduct.go            # Model for Cart to Product
+│   │   ├── Category.go               # Category model
+│   │   ├── Checkout.go               # Checkout model
+│   │   ├── Color.go                  # Color model for Product
+│   │   ├── Customer.go               # Customer model
+│   │   ├── Image.go                  # Image model for Product
+│   │   ├── Order.go                  # Order model
+│   │   ├── Product.go                # Product model
+│   │   ├── Seller.go                 # Seller model
+│   │   ├── Size.go                   # Size model for Product
+│   │   └── User.go                   # User model
+│   ├── routes/                       # Route definitions
+│   │   └── main.go                   # Main routing file
+│   └── utils/                        # Utility functions
+│       ├── cloudinary.go             # Cloudinary integration
+│       ├── midtrans.go               # Midtrans integration
+│       └── smtp.go                   # SMTP integration
+├── tmp/                              # Temporary files
+│   ├── build-errors.log              # Build errors log
+│   ├── main.exe                      # Compiled main executable
+│   └── ngrok.exe                     # Ngrok executable
+├── .air.toml                         # Air live reload configuration
+├── .env                              # Environment variables
+├── .gitignore                        # Git ignore rules
+├── .golangci.yml                     # GolangCI-Lint configuration
+├── go.mod                            # Go module dependencies
+├── go.sum                            # Go module checksums
+├── LICENSE                           # License file
+├── main.go                           # Main application entry point
+└── README.md                         # Project documentation
 ```
 
 ### Documentation

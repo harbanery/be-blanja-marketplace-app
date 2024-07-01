@@ -219,14 +219,18 @@ func VerificationAccount(c *fiber.Ctx) error {
 
 	if queryUserId == "" || queryToken == "" {
 		return c.Status(fiber.StatusForbidden).JSON(fiber.Map{
-			"error": "Invalid url verification",
+			"status":     "forbidden",
+			"statusCode": 403,
+			"error":      "Invalid url verification",
 		})
 	}
 
 	userID, err := strconv.Atoi(queryUserId)
 	if err != nil {
 		return c.Status(fiber.StatusForbidden).JSON(fiber.Map{
-			"error": "Invalid user ID",
+			"status":     "forbidden",
+			"statusCode": 403,
+			"error":      "Invalid user ID",
 		})
 	}
 
@@ -272,11 +276,15 @@ func VerificationAccount(c *fiber.Ctx) error {
 		})
 	}
 
-	return c.Status(fiber.StatusOK).JSON(fiber.Map{
-		"status":     "ok",
-		"statusCode": 200,
-		"message":    "Users verified successfully",
-	})
+	// If the verify is
+	// return c.Status(fiber.StatusOK).JSON(fiber.Map{
+	// 	"status":     "ok",
+	// 	"statusCode": 200,
+	// 	"message":    "Users verified successfully",
+	// })
+
+	url := os.Getenv("REDIRECT_URL") + "login"
+	return c.Redirect(url, 307)
 }
 
 func RequestResetPassword(c *fiber.Ctx) error {
@@ -471,5 +479,13 @@ func CreateRefreshToken(c *fiber.Ctx) error {
 		"message":       "Refresh successfully",
 		"token":         token,
 		"refresh_token": refreshToken,
+	})
+}
+
+func LogoutUser(c *fiber.Ctx) error {
+	return c.Status(fiber.StatusCreated).JSON(fiber.Map{
+		"status":     "success",
+		"statusCode": 201,
+		"message":    "Logout successfully",
 	})
 }
