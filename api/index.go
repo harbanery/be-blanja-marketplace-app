@@ -7,6 +7,7 @@ import (
 	"gofiber-marketplace/src/services"
 	"net/http"
 
+	"github.com/goccy/go-json"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/adaptor"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -20,7 +21,10 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func handler() http.HandlerFunc {
-	app := fiber.New()
+	app := fiber.New(fiber.Config{
+		JSONEncoder: json.Marshal,
+		JSONDecoder: json.Unmarshal,
+	})
 
 	app.Use(helmet.New())
 	app.Use(cors.New(cors.Config{

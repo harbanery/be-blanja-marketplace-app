@@ -8,6 +8,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/goccy/go-json"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/helmet"
@@ -30,7 +31,10 @@ func main() {
 		}
 	}
 
-	app := fiber.New()
+	app := fiber.New(fiber.Config{
+		JSONEncoder: json.Marshal,
+		JSONDecoder: json.Unmarshal,
+	})
 
 	app.Use(helmet.New())
 	app.Use(cors.New(cors.Config{
