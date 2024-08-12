@@ -1,6 +1,8 @@
 package handler
 
 import (
+	"gofiber-marketplace/src/configs"
+	"gofiber-marketplace/src/helpers"
 	"net/http"
 
 	"github.com/goccy/go-json"
@@ -30,17 +32,17 @@ func handler() http.HandlerFunc {
 		ExposeHeaders: "Content-Length",
 	}))
 
+	configs.InitDB()
+	// services.InitMidtrans()
+	helpers.Migration()
+	// routes.Router(app)
+
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusOK).JSON(fiber.Map{
 			"info":    "Hello, This is API Back-End for Blanja from Codecraft.",
 			"message": "Server is running.",
 		})
 	})
-
-	// configs.InitDB()
-	// services.InitMidtrans()
-	// helpers.Migration()
-	// routes.Router(app)
 
 	return adaptor.FiberApp(app)
 }
