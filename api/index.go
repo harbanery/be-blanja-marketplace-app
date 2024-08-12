@@ -4,6 +4,7 @@ import (
 	"gofiber-marketplace/src/configs"
 	"gofiber-marketplace/src/helpers"
 	"gofiber-marketplace/src/routes"
+	"gofiber-marketplace/src/services"
 	"net/http"
 
 	"github.com/gofiber/fiber/v2"
@@ -30,6 +31,7 @@ func handler() http.HandlerFunc {
 	}))
 
 	configs.InitDB()
+	services.InitMidtrans()
 	helpers.Migration()
 	routes.Router(app)
 
