@@ -1,0 +1,1339 @@
+{
+	"info": {
+		"_postman_id": "966327ee-8dc0-4fd2-bfcc-34178624c096",
+		"name": "blanja-api-codecraft",
+		"description": "This API allows developers to access and manage the various features and functions available on **Blanja**, including users, products, categories, carts, and orders.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "36623326"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Fauget Fashion Style\", // seller/brand or customer name\r\n    \"email\": \"fauget.fashionstyle@gmail.com\",\r\n    \"phone\": \"08123456789\",\r\n    \"password\": \"F4u63t_2024!\",\r\n    \"role\": \"seller\" // only seller or customer\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/register"
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Account",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/verify",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"verify"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "",
+									"description": "user_id",
+									"disabled": true
+								},
+								{
+									"key": "token",
+									"value": "",
+									"description": "JWT token from register",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"fauget.fashionstyle@gmail.com\",\r\n    \"password\": \"F4u63t_2024!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/logout"
+					},
+					"response": []
+				},
+				{
+					"name": "Request Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"fauget.fashionstyle@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/requestResetPassword"
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"F@uget2024!\" // must be different from last password\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/resetPassword",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"resetPassword"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "",
+									"description": "user_id",
+									"disabled": true
+								},
+								{
+									"key": "token",
+									"value": "",
+									"description": "JWT token from register",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refresh_token\": \"\" // your JWT token after login\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/refreshToken"
+					},
+					"response": []
+				}
+			],
+			"description": "This folder contains all endpoints related to user authentication, including login, logout, and registration."
+		},
+		{
+			"name": "customers",
+			"item": [
+				{
+					"name": "List Customers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/customers"
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Customer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/customers/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"customers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"description": "customer_id, NOT user_id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customer Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/customer/profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"john.doe@gmail.com\",\r\n    \"phone\": \"15556137418\",\r\n    \"gender\": \"male\",\r\n    \"image\": \"http://res.cloudinary.com/\", // your cloudinary link url\r\n    \"date_of_birth\": \"1985-11-25\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/customer/profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Customer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "{{url}}/customer/profile"
+					},
+					"response": []
+				}
+			],
+			"description": "This folder contains all endpoints related to customer data management."
+		},
+		{
+			"name": "sellers",
+			"item": [
+				{
+					"name": "List Sellers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/sellers"
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Seller",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sellers/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sellers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"description": "seller_id, NOT user_id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Seller Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/seller/profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Fauget Fashion Style\",\r\n    \"email\": \"fauget.fashionstyle@gmail.com\",\r\n    \"phone\": \"08123456789\",\r\n    \"description\": \"Description about Fauget\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/seller/profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Profile Photo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"value": "",
+									"description": "Only upload 1 photo, max size 2MB, and support .jpg, .jpeg, and .png",
+									"type": "file"
+								}
+							],
+							"options": {
+								"formdata": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/seller/profile/photo"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Seller",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sellers/profile/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sellers",
+								"profile",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"description": "seller_id, NOT user_id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "This folder contains all endpoints related to seller data management."
+		},
+		{
+			"name": "addresses",
+			"item": [
+				{
+					"name": "List Addresses",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/addresses"
+					},
+					"response": []
+				},
+				{
+					"name": "List User Addresses",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/addresses/profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Address",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"main_address\": \"79 St, Upper West Side\",\r\n    \"detail_address\": \"Front of my front door no.34\",\r\n    \"name\": \"John Doe\",\r\n    \"phone\": \"08123456789\",\r\n    \"postal_code\": \"10079\",\r\n    \"city\": \"Manhattan, NYC\",\r\n    \"primary\": \"on\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/address"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Address",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"main_address\": \"79 St, Upper West Side\",\r\n    \"detail_address\": \"Front of my front door no.34\",\r\n    \"name\": \"John Doe\",\r\n    \"phone\": \"08123456789\",\r\n    \"postal_code\": \"10079\",\r\n    \"city\": \"Manhattan, NYC\",\r\n    \"primary\": \"off\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/address/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"address",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"description": "address_id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Address",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/address/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"address",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"description": "address_id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "This folder contains all endpoints for managing user addresses, for customers and sellers."
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "List Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/products",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "default: 20",
+									"disabled": true
+								},
+								{
+									"key": "sorting",
+									"value": "",
+									"description": "default: DESC, ASC or DESC",
+									"disabled": true
+								},
+								{
+									"key": "orderBy",
+									"value": "",
+									"description": "default: updated_at",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "",
+									"description": "default: 1",
+									"disabled": true
+								},
+								{
+									"key": "colors",
+									"value": "",
+									"description": "color_value, ex. #000000,#FFFFFF",
+									"disabled": true
+								},
+								{
+									"key": "sizes",
+									"value": "",
+									"description": "size_value, ex. X,XL",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "",
+									"description": "category_id, ex. 5",
+									"disabled": true
+								},
+								{
+									"key": "seller",
+									"value": "",
+									"description": "seller_id, ex, 2",
+									"disabled": true
+								},
+								{
+									"key": "condition",
+									"value": "",
+									"description": "only new or used",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/product/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"product",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"description": "product_id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Fauget Angry Rabbit\",\r\n    \"price\": 200000.0, // currency is IDR\r\n    \"stock\": 100,\r\n    \"rating\": 5,\r\n    \"description\": \"Description about your product\",\r\n    \"condition\": \"new\", // new or used\r\n    \"category_id\": 1,\r\n    \"images\": [ // add multiple images\r\n        {\"url\": \"http://res.cloudinary.com/\"}\r\n    ],\r\n    \"sizes\": [ // add multiple sizes\r\n        {\"value\": \"XXXL\"},\r\n        {\"value\": \"XXL\"},\r\n        {\"value\": \"XL\"},\r\n        {\"value\": \"L\"},\r\n        {\"value\": \"M\"},\r\n        {\"value\": \"S\"}\r\n    ],\r\n    \"colors\": [ // add multiple colors\r\n        {\"value\": \"#000000\"},\r\n        {\"value\": \"#FFFFFF\"}\r\n    ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/product"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Fauget Angry Rabbit\",\r\n    \"price\": 200000.0,\r\n    \"stock\": 100,\r\n    \"rating\": 5,\r\n    \"description\": \"Description about your product\",\r\n    \"condition\": \"new\",\r\n    \"category_id\": 1,\r\n    \"images\": [\r\n        {\"url\": \"http://res.cloudinary.com/\"}\r\n    ],\r\n    \"sizes\": [\r\n        {\"value\": \"XS\"},\r\n        {\"value\": \"S\"},\r\n        {\"value\": \"M\"},\r\n        {\"value\": \"XL\"}\r\n    ],\r\n    \"colors\": [\r\n        {\"value\": \"#000000\"},\r\n        {\"value\": \"#f9f5d8\"}\r\n    ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/product/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"product",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"description": "product_id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/product/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"product",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"description": "product_id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "This folder contains all endpoints related to product management."
+		},
+		{
+			"name": "categories",
+			"item": [
+				{
+					"name": "List Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/categories",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categories"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "",
+									"description": "search category name",
+									"disabled": true
+								},
+								{
+									"key": "sorting",
+									"value": "",
+									"description": "default: DESC, ASC or DESC",
+									"disabled": true
+								},
+								{
+									"key": "orderBy",
+									"value": "",
+									"description": "default: name",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/category/:slug",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": "",
+									"description": "category_slug"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "",
+									"description": "category_name",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "",
+									"description": "category_image, only upload 1 photo, max size 2MB, and support .jpg, .jpeg, and .png",
+									"type": "file"
+								}
+							],
+							"options": {
+								"formdata": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/category"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "",
+									"type": "file"
+								}
+							],
+							"options": {
+								"formdata": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/category/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"description": "category_id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/category/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"description": "category_id"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "This folder contains all endpoints related to product category management."
+		},
+		{
+			"name": "filters",
+			"item": [
+				{
+					"name": "Filter Colors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/colorsFilter"
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Sizes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/sizesFilter"
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/categoriesFilter"
+					},
+					"response": []
+				}
+			],
+			"description": "This folder contains all endpoints related to filtering products based on specific criteria."
+		},
+		{
+			"name": "carts",
+			"item": [
+				{
+					"name": "List Carts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/carts"
+					},
+					"response": []
+				},
+				{
+					"name": "List User Carts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/cart/user"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"product_id\" : 1,\r\n    \"seller_id\": 1,\r\n    \"quantity\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/cart/add"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Product to Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cart_id\": 1,\r\n    \"product_id\": 1,\r\n    \"quantity\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/cart/addProduct"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Product to Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cart_id\": 1,\r\n    \"product_id\": 1,\r\n    \"quantity\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/cart/removeProduct"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete All Product from Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cart_id\": 1,\r\n    \"product_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/cart/deleteAllProduct"
+					},
+					"response": []
+				}
+			],
+			"description": "This folder contains all endpoints related to user shopping carts."
+		},
+		{
+			"name": "checkouts",
+			"item": [
+				{
+					"name": "List Checkouts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/checkout/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"checkout",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "",
+									"description": "checkout_id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Checkout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"carts\": [\r\n        {\"id\": 49}\r\n    ],\r\n    \"delivery\": 2000,\r\n    \"summary\": 20000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/checkout"
+					},
+					"response": []
+				}
+			],
+			"description": "This folder contains all endpoints related to the checkout"
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "List Orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/orders"
+					},
+					"response": []
+				},
+				{
+					"name": "List Orders from User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{url}}/order/profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"address_id\": 1,\r\n    \"checkout_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/order"
+					},
+					"response": []
+				}
+			],
+			"description": "This folder contains all endpoints related to order management and payment processes."
+		},
+		{
+			"name": "assets",
+			"item": [
+				{
+					"name": "Upload Image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"value": "",
+									"description": "Only upload 1 image, max size 2MB, and support .jpg, .jpeg, and .png",
+									"type": "file"
+								}
+							]
+						},
+						"url": "{{url}}/uploadImage"
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Multiple Images",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files",
+									"value": "",
+									"description": "Upload multiple images, max size 2MB, and support .jpg, .jpeg, and .png",
+									"type": "file"
+								}
+							]
+						},
+						"url": "{{url}}/uploadImages"
+					},
+					"response": []
+				}
+			],
+			"description": "This folder contains all endpoints related to asset management, such as product images and other upload files."
+		},
+		{
+			"name": "midtrans (debug only)",
+			"item": [
+				{
+					"name": "Notification Payload",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"transaction_type\": \"on-us\",\r\n  \"transaction_time\": \"2024-06-25 13:25:42\",\r\n  \"transaction_status\": \"settlement\",\r\n  \"transaction_id\": \"d05f7855-142a-4a8e-ae0c-8a5e1659cc16\",\r\n  \"status_message\": \"midtrans payment notification\",\r\n  \"status_code\": \"200\",\r\n  \"signature_key\": \"bb2157644f3b2c38e0c8339f5ade22d69600c11d8c4df75da05e8e73bf740e6db7105bd3a3f24e24a67b6c871cfe93eba62bc53672e74695553c367bee15ea1c\",\r\n  \"settlement_time\": \"2024-06-25 13:28:26\",\r\n  \"reference_id\": \"2f5d50ef-f19e-4afe-8f3e-d61310ab24b2\",\r\n  \"payment_type\": \"qris\",\r\n  \"order_id\": \"2ww7fVT6\",\r\n  \"merchant_id\": \"G053220947\",\r\n  \"issuer\": \"gopay\",\r\n  \"gross_amount\": \"20000.00\",\r\n  \"fraud_status\": \"accept\",\r\n  \"expiry_time\": \"2024-06-25 13:40:42\",\r\n  \"currency\": \"IDR\",\r\n  \"acquirer\": \"gopay\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/payment/check"
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Redirect",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/redirect?order_id&status_code&transaction_status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"redirect"
+							],
+							"query": [
+								{
+									"key": "order_id",
+									"value": null,
+									"description": "transaction_number on order, NOT order_id"
+								},
+								{
+									"key": "status_code",
+									"value": null,
+									"description": "ex. 200"
+								},
+								{
+									"key": "transaction_status",
+									"value": null,
+									"description": "ex. pending (pending, settlement, cancel, expire)"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "This folder contains all endpoints related to payment integration using Midtrans."
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://be-blanja-marketplace-app-develop.up.railway.app"
+		}
+	]
+}
