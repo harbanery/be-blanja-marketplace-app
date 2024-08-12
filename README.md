@@ -254,7 +254,19 @@ be-blanja-marketplace-app/
 
 Access the API documentation for the **Blanja** project. Use this documentation to test endpoints and understand the structure and functionality of the available API`s in this project.
 
-[![Blanja API Postman Documentation](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/36623326/2sA3duEsiT#e0a6ecab-217d-4075-854e-93131d42d842)
+[![Blanja API Postman Collection](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/36623326/2sA3duEsiT#e0a6ecab-217d-4075-854e-93131d42d842)
+
+Or you can just import the collection manually:
+
+- [`v2`](https://github.com/harbanery/be-blanja-marketplace-app/blob/main/docs/blanja-api-codecraft.postman_collection_v2.json)
+
+- [`v2.1`](https://github.com/harbanery/be-blanja-marketplace-app/blob/main/docs/blanja-api-codecraft.postman_collection_v2.1.json)
+
+And other documentations:
+
+- [`Database Diagram`](https://github.com/harbanery/be-blanja-marketplace-app/blob/main/docs/blanja-api-codecraft.diagram.png)
+
+- [`Database Query`](https://github.com/harbanery/be-blanja-marketplace-app/blob/main/docs/blanja-api-codecraft.query.sql)
 
 ## Contributing
 
