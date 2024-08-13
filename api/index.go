@@ -3,7 +3,10 @@ package handler
 import (
 	"gofiber-marketplace/src/configs"
 	"gofiber-marketplace/src/helpers"
+	"gofiber-marketplace/src/routes"
+	"gofiber-marketplace/src/services"
 	"net/http"
+	"time"
 
 	"github.com/goccy/go-json"
 	"github.com/gofiber/fiber/v2"
@@ -20,8 +23,10 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 func handler() http.HandlerFunc {
 	app := fiber.New(fiber.Config{
-		JSONEncoder: json.Marshal,
-		JSONDecoder: json.Unmarshal,
+		JSONEncoder:  json.Marshal,
+		JSONDecoder:  json.Unmarshal,
+		ReadTimeout:  10 * time.Second,
+		WriteTimeout: 10 * time.Second,
 	})
 
 	app.Use(helmet.New())
@@ -33,16 +38,9 @@ func handler() http.HandlerFunc {
 	}))
 
 	configs.InitDB()
-	// services.InitMidtrans()
+	services.InitMidtrans()
 	helpers.Migration()
-	// routes.Router(app)
-
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.Status(fiber.StatusOK).JSON(fiber.Map{
-			"info":    "Hello, This is API Back-End for Blanja from Codecraft.",
-			"message": "Server is running.",
-		})
-	})
+	routes.Router(app)
 
 	return adaptor.FiberApp(app)
 }
