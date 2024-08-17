@@ -11,7 +11,7 @@
     Marketplace Implementation
     <br />
     <br />
-    <a href="https://be-blanja-marketplace-app-develop.up.railway.app/" target="_blank">View Demo</a>
+    <a href="https://api-blanja-marketplace-app.onrender.com/" target="_blank">View Demo</a>
     ·
     <a href="https://blanja-website-project.netlify.app/" target="_blank">View Front-End Demo</a>
     ·
@@ -92,7 +92,7 @@ Ensure you have the following installed on your local machine:
 
 - [Golang][Go-url]
 - [PostgreSQL for Local Database][Postgre-url]
-- [Ngrok for Midtrans Support](https://ngrok.com/)
+- [Ngrok for Public Localhost](https://ngrok.com/)
 
 ### Installation
 
@@ -142,6 +142,8 @@ Ensure you have the following installed on your local machine:
       # REDIRECT_URL
       REDIRECT_URL=YOUR_FRONTEND_HOST_URL
    ```
+
+   For more value information with format, you can go to [`.env.example`](https://github.com/harbanery/be-blanja-marketplace-app/blob/main/.env.example)
 
 ### Running the Application
 
@@ -258,9 +260,7 @@ Access the API documentation for the **Blanja** project. Use this documentation 
 
 Or you can just import the collection manually:
 
-- [`v2`](https://github.com/harbanery/be-blanja-marketplace-app/blob/main/docs/blanja-api-codecraft.postman_collection_v2.json)
-
-- [`v2.1`](https://github.com/harbanery/be-blanja-marketplace-app/blob/main/docs/blanja-api-codecraft.postman_collection_v2.1.json)
+[`v2`](https://github.com/harbanery/be-blanja-marketplace-app/blob/main/docs/blanja-api-codecraft.postman_collection_v2.json) [`v2.1`](https://github.com/harbanery/be-blanja-marketplace-app/blob/main/docs/blanja-api-codecraft.postman_collection_v2.1.json)
 
 And other documentations:
 
@@ -295,6 +295,22 @@ And other documentations:
     <td><a href="https://github.com/harbanery" target="_blank"><b>Raihan Yusuf</b></a></td>
   </tr>
 </table>
+
+### Contribution List
+
+1. [**Raihan Yusuf**](https://github.com/harbanery)
+
+   - Completed all APIs except for Cart and Checkout
+
+   - Responsible for features, including payment gateway, email verification, and product filtering
+
+   - Relational database design
+
+   - Postman API documentation
+
+2. [**Syaifulloh Ismail**](https://github.com/nizuma666)
+
+   - Completed the Cart and Checkout APIs, including the ability to add and reduce the quantity of products in the cart
 
 ### How to Contribute
 
